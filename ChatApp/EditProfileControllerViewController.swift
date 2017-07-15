@@ -8,8 +8,10 @@
 
 import UIKit
 import QuartzCore
+import Firebase
+import FirebaseDatabase
 
-class EditProfileController: UINavigationController{
+class EditProfileController: UIViewController{
 
     let descriptionTextView: UITextView = {
         let textView = UITextView()
@@ -32,7 +34,7 @@ class EditProfileController: UINavigationController{
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleDescriptionUpdate), for: .touchUpInside)
+       
         return button
     }()
     
@@ -43,10 +45,10 @@ class EditProfileController: UINavigationController{
         return label
     }()
     
-    let getDescription = RestAPI()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
+        navigationItem.title = "Nume"
         
         view.addSubview(descriptionTextView)
         setupDescriptionTextView()
@@ -55,17 +57,11 @@ class EditProfileController: UINavigationController{
         view.addSubview(descriptionLabel)
         setupDescriptionLabel()
         view.backgroundColor = UIColor.white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
-
-        
-
-        //     NU MERGEEEE!!!!!!!!!     ->     Cancel Button
     }
     
     func setupDescriptionTextView() {
         descriptionTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        descriptionTextView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 40).isActive = true
+        descriptionTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 85).isActive = true
         descriptionTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48).isActive = true
         descriptionTextView.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
@@ -85,27 +81,46 @@ class EditProfileController: UINavigationController{
     }
     
     func handleBack() {
-        let messagesController = MessagesController()
-        present(messagesController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         return
     }
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+        }
+        else {
+            let uid = Auth.auth().currentUser?.uid
+            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {
+                (snapshot) in
+                print(snapshot)
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    //self.navigationItem.title = dictionary["name"] as? String
+                    //self.initNavigationItemTitleView(profileName: (dictionary["name"] as? String)!)
+                    self.navigationItem.title = (dictionary["name"] as? String)!
+                }
+            }, withCancel: nil)
+        }
+    }
+
+    func handleLogout() {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print (logoutError)
+        }
+        let loginController = LoginController()
+        present(loginController, animated: true, completion: nil)
+    }
+
     
     func handleDescriptionUpdate() {
-        let jsonURLString = "http://www.json-generator.com/api/json/get/cemCHSnlLm?indent=2"
-        getDescription.downloadApi(String: jsonURLString)
         
         
-        
-        //          DE INLOCUIT TIMER!!!!!!!!!!!!!!!!!!!
-        
-        
-        var timer = Timer()
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(delayedAction), userInfo: nil, repeats: false)
+            //      SOME WORK TO DO HERE
         return
     }
     
-     func delayedAction() {
-        descriptionLabel.text = getDescription.user.name
-    }
 
 }

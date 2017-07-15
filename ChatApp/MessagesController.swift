@@ -17,7 +17,6 @@ class MessagesController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         let image = UIImage(named: "newMessageIcon")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
@@ -51,10 +50,6 @@ class MessagesController: UITableViewController {
     }
     
     func setupNavigationItemTitle(title: String) {
-        //navigationItemTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //navigationItemTitle.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
-        //navigationItemTitle.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        //navigationItemTitle.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 60).isActive = true
         navigationItemTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         navigationItemTitle.setTitleColor(UIColor.black, for: .normal)
         navigationItemTitle.setTitle(title, for: .normal)
@@ -65,7 +60,8 @@ class MessagesController: UITableViewController {
   
     func editProfile() {
         let editProfileController = EditProfileController()
-        present(editProfileController, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: editProfileController)
+        present(navController, animated: true, completion: nil)
     }
     
     func handleLogout() {

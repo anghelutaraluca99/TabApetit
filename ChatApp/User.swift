@@ -15,10 +15,10 @@ class User: NSObject {
     var Description: String?
     
     override init(){
-        self.name = "nume"
+        self.name = "name"
         self.email = "email"
-        self.profileImageURL = "poza"
-        self.Description = "descriere"
+        self.profileImageURL = "photo"
+        self.Description = "description"
     }
     
     func getFromJson(json: [String: Any]) {

@@ -208,7 +208,7 @@ class LoginController: UIViewController {
     }
     
     func handleLoginRegisterChange() {
-        print(loginRegisterSegmentedControl.selectedSegmentIndex)
+        //print(loginRegisterSegmentedControl.selectedSegmentIndex)
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex )
         //Changes Button Title
         loginRegisterButton.setTitle(title, for: .normal)

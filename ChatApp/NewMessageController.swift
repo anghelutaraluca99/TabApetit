@@ -36,7 +36,7 @@ class NewMessageController: UITableViewController {
                     self.tableView.reloadData()
                 }//dispatch async needed othervise app crashes
                 
-                print(user.name  , user.email)
+                print(user.name!  , user.email!)
             }
         }, withCancel: nil)
         

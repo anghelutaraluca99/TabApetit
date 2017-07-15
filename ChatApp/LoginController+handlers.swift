@@ -19,16 +19,16 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
     }
  
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[String: AnyObject]){
-        print(info)
+        //print(info)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print(info)
+        //print(info)
         if let editedImage = info["UIImagePickedControllerEditedImage"]{
             profileImageView.image = (editedImage as! UIImage)
         }
         else if let originalImage = info["UIImagePickerControllerOriginalImage"]{
-            print(originalImage.size)
+            //print(originalImage.size)
             profileImageView.image = (originalImage as! UIImage)
         }
         self.dismiss(animated: true, completion: nil)
@@ -36,7 +36,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
 
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("canceled picker")
+        //print("canceled picker")
         dismiss(animated: true, completion: nil)
     }
 }

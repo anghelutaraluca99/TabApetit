@@ -18,8 +18,15 @@ class NewMessageController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .plain, target: self, action: #selector(handleNewDebate))
         tableView.register(userCell.self, forCellReuseIdentifier: cellId)
         fetchUser()
+    }
+    
+    func handleNewDebate() {
+        let newDebateController = NewDebateController()
+        let navController = UINavigationController(rootViewController: newDebateController)
+        present(navController, animated: true, completion: nil)
     }
     
     func fetchUser() {
@@ -72,7 +79,6 @@ class NewMessageController: UITableViewController {
         return cell
     }//show users + emails
     
- 
 }
 
 class userCell: UITableViewCell  {

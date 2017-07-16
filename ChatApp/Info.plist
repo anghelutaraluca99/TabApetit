@@ -9,6 +9,8 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to import profile picture</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

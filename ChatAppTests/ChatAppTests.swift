@@ -7,6 +7,11 @@
 //
 
 import XCTest
+import FirebaseAuth
+import FirebaseCore
+import FirebaseStorage
+import FirebaseDatabase
+
 @testable import ChatApp
 
 class ChatAppTests: XCTestCase {

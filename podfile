@@ -1,4 +1,5 @@
-#i Uncomment the next line to define a global platform for your project
+# Uncomment the next line to define a global platform for your project
+
 # platform :ios, '9.0'
 
 target 'ChatApp' do
@@ -13,6 +14,10 @@ target 'ChatApp' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
 	pod 'SwiftyJSON'
+	pod 'GoogleMaps'
+	pod 'GooglePlaces'
+	pod 'GooglePlacePicker'
+	pod 'GooglePlacesSearchController'
 
   target 'ChatAppTests' do
     inherit! :search_paths

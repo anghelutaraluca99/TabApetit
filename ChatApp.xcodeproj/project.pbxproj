@@ -44,6 +44,7 @@
 		6BE9922A1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
 		6BE9922B1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
 		6BE9922C1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
+		6BE9922E1F1B78EF00CDDB7B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9922D1F1B78EF00CDDB7B /* MapKit.framework */; };
 		8494B5137B0576057CF5C575 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21AA2682256945F7E54399A /* Pods_ChatApp.framework */; };
 		FA50C0311CD4B366F31F370D /* Pods_ChatAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB8A55A0B803181CC7705F0 /* Pods_ChatAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,8 @@
 		6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDebateController.swift; sourceTree = "<group>"; };
+		6BE9922D1F1B78EF00CDDB7B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6BE992321F1BBCBE00CDDB7B /* ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		7A2DC1E93185D1BCDAA79D86 /* Pods-ChatAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatAppUITests/Pods-ChatAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		98E6336CBECAED67D55CDB02 /* Pods-ChatAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatAppTests/Pods-ChatAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACB8A55A0B803181CC7705F0 /* Pods_ChatAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BE991E81F1A882B00CDDB7B /* CoreLocation.framework in Frameworks */,
+				6BE9922E1F1B78EF00CDDB7B /* MapKit.framework in Frameworks */,
 				8494B5137B0576057CF5C575 /* Pods_ChatApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +169,7 @@
 				6B60D64B1EFCC33B0030BCD4 /* Info.plist */,
 				6B60D6721EFCC9510030BCD4 /* GoogleService-Info.plist */,
 				6B60D6431EFCC33B0030BCD4 /* ChatApp.xcdatamodeld */,
+				6BE992321F1BBCBE00CDDB7B /* ChatApp-Bridging-Header.h */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 		83ECA11F516936CD4DFA0B58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BE9922D1F1B78EF00CDDB7B /* MapKit.framework */,
 				6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */,
 				D21AA2682256945F7E54399A /* Pods_ChatApp.framework */,
 				ACB8A55A0B803181CC7705F0 /* Pods_ChatAppTests.framework */,
@@ -319,7 +325,13 @@
 					6B60D6381EFCC33B0030BCD4 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 792P25997C;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					6B60D64F1EFCC33B0030BCD4 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -709,6 +721,7 @@
 			baseConfigurationReference = 486AB8CCE6CD48A081ECDA35 /* Pods-ChatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 792P25997C;
 				INFOPLIST_FILE = ChatApp/Info.plist;
@@ -716,6 +729,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Raluca-Angheluta.ChatApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatApp/ChatApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -725,6 +740,7 @@
 			baseConfigurationReference = FD50D7B7E8EBC891A37469B5 /* Pods-ChatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 792P25997C;
 				INFOPLIST_FILE = ChatApp/Info.plist;
@@ -732,6 +748,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Raluca-Angheluta.ChatApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChatApp/ChatApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

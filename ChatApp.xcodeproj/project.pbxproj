@@ -31,6 +31,7 @@
 		6B60D6811EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60D6801EFFB7F30030BCD4 /* LoginController+handlers.swift */; };
 		6B60D6821EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60D6801EFFB7F30030BCD4 /* LoginController+handlers.swift */; };
 		6B60D6831EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60D6801EFFB7F30030BCD4 /* LoginController+handlers.swift */; };
+		6B6FBD8A1F1C9C9400A3FD2E /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FBD891F1C9C9400A3FD2E /* Debate.swift */; };
 		6B7B21B31F120B2D00E6196E /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B21B21F120B2D00E6196E /* RestApi.swift */; };
 		6B7B21B41F120B2D00E6196E /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B21B21F120B2D00E6196E /* RestApi.swift */; };
 		6B7B21B51F120B2D00E6196E /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B21B21F120B2D00E6196E /* RestApi.swift */; };
@@ -89,6 +90,7 @@
 		6B60D6771EFD9C5A0030BCD4 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		6B60D67C1EFF738E0030BCD4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B60D6801EFFB7F30030BCD4 /* LoginController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+handlers.swift"; sourceTree = "<group>"; };
+		6B6FBD891F1C9C9400A3FD2E /* Debate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		6B7B21B21F120B2D00E6196E /* RestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApi.swift; sourceTree = "<group>"; };
 		6BB2513A1F0EFB8B0093E568 /* EditProfileControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileControllerViewController.swift; sourceTree = "<group>"; };
 		6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				6B60D67C1EFF738E0030BCD4 /* User.swift */,
+				6B6FBD891F1C9C9400A3FD2E /* Debate.swift */,
 				6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */,
 			);
 			name = Model;
@@ -544,6 +547,7 @@
 				6B60D6451EFCC33B0030BCD4 /* ChatApp.xcdatamodeld in Sources */,
 				6BE9922A1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */,
 				6B60D6781EFD9C5A0030BCD4 /* NewMessageController.swift in Sources */,
+				6B6FBD8A1F1C9C9400A3FD2E /* Debate.swift in Sources */,
 				6B60D67D1EFF738E0030BCD4 /* User.swift in Sources */,
 				6BB2513F1F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */,
 				6B60D66E1EFCC5100030BCD4 /* LoginController.swift in Sources */,

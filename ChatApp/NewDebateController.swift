@@ -11,197 +11,121 @@ import UIKit
 import CoreLocation
 import MapKit
 import GoogleMaps
+import GooglePlaces
+import GooglePlacePicker
 
-class NewDebateController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
-////UISearchResultsUpdating
+class NewDebateController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate {
     
-    var locationManager: CLLocationManager = CLLocationManager()
-    var view2 = UIView()
-    var view1 = UIView()
-    let searchBar = UISearchBar()
+    var googleMapsView = GMSMapView()
+    var locationManager = CLLocationManager()
+    
+    let window = UIApplication.shared.keyWindow!
+    
+    let inputsContainerView : UIView = {
+        let view = UIView();
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
+        return view
+    }()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(openSearchAddress))
+        view.addSubview(inputsContainerView)
+        setupInputsContainerView()
         
-        GMSServices.provideAPIKey("AIzaSyBlIivO8ucSKTEm-episVXecRf1dw-YjRU")
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        initGoogleMaps()
+        locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        searchBar.searchBarStyle = UISearchBarStyle.prominent
-        searchBar.placeholder = " Search..."
-        searchBar.sizeToFit()
-        searchBar.isTranslucent = false
-        searchBar.backgroundImage = UIImage()
-        searchBar.delegate = self as? UISearchBarDelegate
-        navigationItem.titleView = searchBar
-        searchBar.isHidden = true
-
-        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange textSearched: String)
-    {
-        
+    func setupInputsContainerView() {
+        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
+        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputsContainerView.topAnchor.constraint(equalTo: view.topAnchor, constant: navigationBarHeight).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        inputsContainerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
+    //GMSAutocompleteViewControlerDelegate
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        let position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        let marker = GMSMarker(position: position)
+        marker.map = googleMapsView
+        marker.title = "Your Meeting Location"
+        let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 16)
+        self.googleMapsView.camera = camera
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func handleSearch() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain,target: self, action: #selector(handleDone))
-        searchBar.isHidden = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        let tableView = UITableView()
-        view1 = tableView
-        view = view1
-        
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print(error )
     }
     
-    func handleDone() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearch))
-        view = view2
-        searchBar.isHidden = true
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations.last!
-        let long = userLocation.coordinate.longitude;
-        let lat = userLocation.coordinate.latitude;
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 10)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        //let currentLocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        mapView.animate(to: camera)
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
-        view2 = mapView
-        view = view2
-        manager.stopUpdatingLocation()
+    func openSearchAddress() {
+        let autoCompleteController = GMSAutocompleteViewController()
+        autoCompleteController.delegate = self
+        self.locationManager.startUpdatingLocation()
+        self.present(autoCompleteController, animated: true, completion: nil )
     }
-   
+    //GMSMapViewDelegate
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        self.googleMapsView.isMyLocationEnabled = true
+    }
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        self.googleMapsView.isMyLocationEnabled = true
+        if(gesture){
+            mapView.selectedMarker = nil
+        }
+    }
+    //CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16)
+        self.googleMapsView.animate(to: camera)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func initGoogleMaps() {
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+        googleMapsView = mapView
+        self.googleMapsView.delegate = self
+        self.googleMapsView.isMyLocationEnabled = true
+        self.googleMapsView.settings.myLocationButton = true
+        self.googleMapsView.camera = camera
+        view = googleMapsView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mapView
+    }
+    
     func handleCancel() {
         self.dismiss(animated: true, completion: nil)
-        return
     }
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        mapView.isMyLocationEnabled = true
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        mapView.isMyLocationEnabled = true
-        if(gesture) {
-            mapView.selectedMarker = nil
-        }
-    }
-    
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
-//        locationManager.stopUpdatingLocation()
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
-//    }
-    
-    
-//    
-//    let cellId = "cellId"
-//    let locationManager = CLLocationManager()
-//    
-//    let googleMapsApiKey = "AIzaSyDwamxZzHnOBRwDzol8tH"
-//    GMSServices.provideApiKey
-//    let camera = GMSCameraPosition.camera(withLatitude: 46.229585, longitude: 27.669724, zoom: 10)
-//    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-////    let array = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-////    var filteredArray = [String]()
-//    var searchController = UISearchController()
-//    let resultsController = UITableViewController()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = UIColor.white
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-//        
-//        view.addSubview(mapView)
-//        setupMapView()
-//        mapView.tintColor = UIColor.gray
-//        mapView.isHidden = false
-//        
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-//        
-////        searchController = UISearchController(searchResultsController: resultsController)
-////        tableView.tableHeaderView = searchController.searchBar
-////        searchController.searchResultsUpdater = self
-////        resultsController.tableView.delegate = self
-////        resultsController.tableView.dataSource = self
-//        
-//    }
-//    
-//    
-//    func handleCancel() {
-//        self.dismiss(animated: true, completion: nil)
-//        return
-//    }
-//    
-////    func updateSearchResults(for searchController: UISearchController) {
-////        filteredArray = array.filter({ (array : String) -> Bool in
-////            if array.contains(searchController.searchBar.text!) {
-////                return true
-////            } else {
-////                return false
-////            }
-////        })
-////        resultsController.tableView.reloadData()
-////    }
-////    
-////    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-////        if tableView == resultsController.tableView {
-////            return filteredArray.count
-////        } else {
-////            return array.count
-////        }
-////    }
-////    
-////    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-////        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-////        if tableView == resultsController.tableView {
-////            cell.textLabel?.text = filteredArray[indexPath.row]
-////        } else {
-////            cell.textLabel?.text = array[indexPath.row]
-////        }
-////        return cell
-////    }
-//}
-//
-//extension NewDebateController {
-//    
-//    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-//        if status == .authorizedWhenInUse {
-//            locationManager.startUpdatingLocation()
-//            mapView.isMyLocationEnabled = true
-//            mapView.settings.myLocationButton = true
-//        }
-//    }
-//    
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let location = locations.first {
-//            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-//            locationManager.stopUpdatingLocation()
-//        }
-//    }
-//    func setupMapView() {
-//        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-//    }
 }

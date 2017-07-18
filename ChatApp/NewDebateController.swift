@@ -20,11 +20,7 @@ class NewDebateController : UIViewController, CLLocationManagerDelegate, GMSMapV
     var locationManager = CLLocationManager()
 //    let datePicker = UIDatePicker()
     
-    
-    
-    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))

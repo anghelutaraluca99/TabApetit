@@ -16,19 +16,19 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("AIzaSyCyJMQkXVXo831k5-kVf2zyKDrUCJH03P8")
         GMSPlacesClient.provideAPIKey("AIzaSyDhhVK10qmBDwPgWvjE34crHRtVzsZhqzU")
-
         
         FirebaseApp.configure()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+       // window?.rootViewController = UINavigationController(rootViewController: TabBarController())
+        window?.rootViewController = TabBarController()
         
         
         return true

@@ -41,6 +41,9 @@
 		6BB2513F1F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */; };
 		6BB251401F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */; };
 		6BB251411F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */; };
+		6BCB3CFC1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
+		6BCB3CFD1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
+		6BCB3CFE1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
 		6BE991E81F1A882B00CDDB7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */; };
 		6BE9922A1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
 		6BE9922B1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
@@ -94,6 +97,7 @@
 		6B7B21B21F120B2D00E6196E /* RestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApi.swift; sourceTree = "<group>"; };
 		6BB2513A1F0EFB8B0093E568 /* EditProfileControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileControllerViewController.swift; sourceTree = "<group>"; };
 		6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
+		6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDebateController.swift; sourceTree = "<group>"; };
 		6BE9922D1F1B78EF00CDDB7B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -197,12 +201,13 @@
 		6B60D6761EFD9C2C0030BCD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B60D63E1EFCC33B0030BCD4 /* MessagesController.swift */,
-				6BB2513A1F0EFB8B0093E568 /* EditProfileControllerViewController.swift */,
 				6B60D66D1EFCC5100030BCD4 /* LoginController.swift */,
 				6B60D6801EFFB7F30030BCD4 /* LoginController+handlers.swift */,
-				6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */,
+				6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */,
+				6B60D63E1EFCC33B0030BCD4 /* MessagesController.swift */,
+				6BB2513A1F0EFB8B0093E568 /* EditProfileControllerViewController.swift */,
 				6B60D6771EFD9C5A0030BCD4 /* NewMessageController.swift */,
+				6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B7B21B31F120B2D00E6196E /* RestApi.swift in Sources */,
+				6BCB3CFC1F1DDE2C002B56D1 /* TabBarController.swift in Sources */,
 				6B60D6451EFCC33B0030BCD4 /* ChatApp.xcdatamodeld in Sources */,
 				6BE9922A1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */,
 				6B60D6781EFD9C5A0030BCD4 /* NewMessageController.swift in Sources */,
@@ -565,6 +571,7 @@
 				6B7B21B41F120B2D00E6196E /* RestApi.swift in Sources */,
 				6B60D67E1EFF738E0030BCD4 /* User.swift in Sources */,
 				6B60D6551EFCC33B0030BCD4 /* ChatAppTests.swift in Sources */,
+				6BCB3CFD1F1DDE2C002B56D1 /* TabBarController.swift in Sources */,
 				6BE9922B1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */,
 				6BB251401F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */,
 				6B60D66F1EFCC5100030BCD4 /* LoginController.swift in Sources */,
@@ -581,6 +588,7 @@
 				6B7B21B51F120B2D00E6196E /* RestApi.swift in Sources */,
 				6B60D67F1EFF738E0030BCD4 /* User.swift in Sources */,
 				6B60D6601EFCC33B0030BCD4 /* ChatAppUITests.swift in Sources */,
+				6BCB3CFE1F1DDE2C002B56D1 /* TabBarController.swift in Sources */,
 				6BE9922C1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */,
 				6BB251411F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */,
 				6B60D6701EFCC5100030BCD4 /* LoginController.swift in Sources */,

@@ -29,7 +29,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         item1.tabBarItem = icon1
         item2.tabBarItem = icon2
 
-        let controllers = [item1, item2]
+        let controllers = [item2, item1]
         self.viewControllers = controllers
     }
     

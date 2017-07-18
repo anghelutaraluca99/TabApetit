@@ -84,7 +84,10 @@ class LoginController: UIViewController {
         imageView.image = UIImage(named: "addProfilePicture")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
+            #selector(handleSelectProfileImageView)))
+        imageView.layer.cornerRadius = 75
+        imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
         return imageView
     }()//Profile picture
@@ -239,8 +242,8 @@ class LoginController: UIViewController {
     func setupProfileImageView() {
         profileImageView.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -20).isActive = true
-        profileImageView.widthAnchor.constraint(equalTo: loginRegisterSegmentedControl.widthAnchor, multiplier: 2/5).isActive = true
-        profileImageView.heightAnchor.constraint(equalTo: loginRegisterSegmentedControl.widthAnchor, multiplier: 2/5).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
 
     func handleLogin() {

@@ -18,42 +18,37 @@ class NewDebateController : UIViewController, CLLocationManagerDelegate, GMSMapV
     
     var googleMapsView = GMSMapView()
     var locationManager = CLLocationManager()
-//    let datePicker = UIDatePicker()
+    
+    let searchButton : UIBarButtonItem = {
+       var button = UIBarButtonItem()
+        button = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(openSearchAddress))
+        return button
+    }()
+    
+    let confirmButton : UIBarButtonItem = {
+        var button = UIBarButtonItem()
+        button = UIBarButtonItem(image: #imageLiteral(resourceName: "confirmIcon"), style: .plain, target: self, action: #selector(handleConfirm))
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(openSearchAddress))
-        
+        navigationItem.rightBarButtonItems = [searchButton, confirmButton]
         initGoogleMaps()
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
- //       createDatePicker()
+
     }
     
-//    func createDatePicker() {
-//        datePicker.datePickerMode = .dateAndTime
-//        let toolbar = UIToolbar()
-//        toolbar.sizeToFit()
-//        let setDateButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(handleDatePick))
-//        toolbar.setItems([setDateButton], animated: true)
-//        dateTextField.inputAccessoryView = toolbar
-//        dateTextField.inputView = datePicker
-//    }
-//    
-//    func handleDatePick() {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .short
-//        formatter.timeStyle = .short
-//        dateTextField.text = "\(datePicker.date)"
-//        self.view.endEditing(true)
-//    }
-    
+    func handleConfirm() {
+        print("asta merge")
+    }
+
     func initGoogleMaps() {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.

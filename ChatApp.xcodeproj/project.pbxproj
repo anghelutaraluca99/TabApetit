@@ -44,6 +44,9 @@
 		6BCB3CFC1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
 		6BCB3CFD1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
 		6BCB3CFE1F1DDE2C002B56D1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */; };
+		6BCB3D031F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3D021F1E87F8002B56D1 /* SettingsControllerExtension.swift */; };
+		6BCB3D041F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3D021F1E87F8002B56D1 /* SettingsControllerExtension.swift */; };
+		6BCB3D051F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB3D021F1E87F8002B56D1 /* SettingsControllerExtension.swift */; };
 		6BE991E81F1A882B00CDDB7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */; };
 		6BE9922A1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
 		6BE9922B1F1A8E6400CDDB7B /* NewDebateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */; };
@@ -98,6 +101,7 @@
 		6BB2513A1F0EFB8B0093E568 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		6BB2513E1F10C5490093E568 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		6BCB3D021F1E87F8002B56D1 /* SettingsControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerExtension.swift; sourceTree = "<group>"; };
 		6BE991E71F1A882B00CDDB7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDebateController.swift; sourceTree = "<group>"; };
 		6BE9922D1F1B78EF00CDDB7B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -206,6 +210,7 @@
 				6BCB3CFA1F1DDE2C002B56D1 /* TabBarController.swift */,
 				6B60D63E1EFCC33B0030BCD4 /* MessagesController.swift */,
 				6BB2513A1F0EFB8B0093E568 /* SettingsController.swift */,
+				6BCB3D021F1E87F8002B56D1 /* SettingsControllerExtension.swift */,
 				6B60D6771EFD9C5A0030BCD4 /* NewMessageController.swift */,
 				6BE992291F1A8E6400CDDB7B /* NewDebateController.swift */,
 			);
@@ -555,6 +560,7 @@
 				6B60D6781EFD9C5A0030BCD4 /* NewMessageController.swift in Sources */,
 				6B6FBD8A1F1C9C9400A3FD2E /* Debate.swift in Sources */,
 				6B60D67D1EFF738E0030BCD4 /* User.swift in Sources */,
+				6BCB3D031F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */,
 				6BB2513F1F10C5490093E568 /* UITextViewPlaceholder.swift in Sources */,
 				6B60D66E1EFCC5100030BCD4 /* LoginController.swift in Sources */,
 				6B60D6811EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */,
@@ -578,6 +584,7 @@
 				6B60D6791EFD9C5A0030BCD4 /* NewMessageController.swift in Sources */,
 				6BB2513C1F0EFB8B0093E568 /* SettingsController.swift in Sources */,
 				6B60D6821EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */,
+				6BCB3D041F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +602,7 @@
 				6B60D67A1EFD9C5A0030BCD4 /* NewMessageController.swift in Sources */,
 				6BB2513D1F0EFB8B0093E568 /* SettingsController.swift in Sources */,
 				6B60D6831EFFB7F30030BCD4 /* LoginController+handlers.swift in Sources */,
+				6BCB3D051F1E87F8002B56D1 /* SettingsControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import GooglePlaces
+import FirebaseDatabase
+import FirebaseAuth
+import Firebase
 
 class NewDebateSettingsController: UIViewController {
 
@@ -16,6 +18,7 @@ class NewDebateSettingsController: UIViewController {
     var placeLat = CLLocationDegrees()
     let datePicker = UIDatePicker()
     let timePicker = UIDatePicker()
+    var refDebates = DatabaseReference()
     
     let placeLabelTitle : UILabel = {
        let label = UILabel()
@@ -80,7 +83,6 @@ class NewDebateSettingsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "confirmIcon"), style: .plain, target: self, action: #selector(handleConfirm))
@@ -105,14 +107,29 @@ class NewDebateSettingsController: UIViewController {
     }
     
     func handleConfirm() {
-        let debate = Debate()
-        debate.placeName = self.placeName
-        debate.placeLat = self.placeLat
-        debate.placeLong = self.placeLong
-        debate.date = datePicker.date
-        debate.time = timePicker.date
-        debate.theme = themeTextField.text
-        print("debate created")
+        let ref = Database.database().reference(fromURL: "https://chatapp-ed83f.firebaseio.com/")
+        let key = NSUUID().uuidString
+        print(key)
+        refDebates = ref.child("Debates").child(key)
+        
+        let debate = ["id" : key,
+                      "placeName" : self.placeName as String,
+                      "placeLat" : self.placeLat as CLLocationDegrees,
+                      "placeLong" : self.placeLong as CLLocationDegrees,
+                      "date" : dateTextField.text!,
+                      "time" : timeTextField.text!,
+                      "theme": themeTextField.text!,
+                      "numberOfParticipants": 1 as Int] as [String : Any]
+        if Auth.auth().currentUser?.uid != nil {
+            refDebates.updateChildValues(debate, withCompletionBlock: {(error2, ref) in
+                if error2 != nil{
+                    print(error2!)
+                    return
+                }
+                self.dismiss(animated: true, completion: nil)
+                print("Debate saved succesfuly into the Firebase database!")
+            })
+        }
     }
     
     func donePressed1() {

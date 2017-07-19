@@ -199,7 +199,6 @@ class LoginController: UIViewController {
             }
             self.dismiss(animated: true, completion: nil)
             print("User saved succesfuly into the Firebase database!")
-            
         })
     }
     
@@ -274,7 +273,6 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         //login screen color
         view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
-        
         //rgb(75, 33, 66)
         //rgb(119, 104, 133)
         //view.backgroundColor = UIColor(colorLiteralRed: 61/255, green: 91/255, blue: 151/255, alpha: 1)

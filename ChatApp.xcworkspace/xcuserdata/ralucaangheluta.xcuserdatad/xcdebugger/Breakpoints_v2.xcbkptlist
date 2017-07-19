@@ -56,7 +56,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522181752.108688"
+                  timestampString = "522189916.505277"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -71,7 +71,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522181752.111766"
+                  timestampString = "522189916.508057"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -104,7 +104,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522181752.119694"
+                  timestampString = "522189916.514973"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -119,7 +119,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522181752.123286"
+                  timestampString = "522189916.51793"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -168,7 +168,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147917.988499"
+            timestampString = "522187629.481105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147936.904197"
+            timestampString = "522187897.179092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -325,11 +325,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147940.027509"
+            timestampString = "522187897.179092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -341,11 +341,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147940.575735"
+            timestampString = "522187897.179092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -357,11 +357,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147942.256064"
+            timestampString = "522187897.179092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -373,7 +373,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatApp/NewDebateController.swift"
-            timestampString = "522172698.236588"
+            timestampString = "522185598.672507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -442,6 +442,22 @@
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatApp/NewDebateSettingsController.swift"
+            timestampString = "522189195.212594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

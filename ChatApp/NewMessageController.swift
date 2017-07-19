@@ -63,6 +63,9 @@ class NewMessageController: UITableViewController{
         cell.imageView?.image = UIImage(named: "addProfilePicture")
         if let profileImageUrl = user.profileImageURL {
             let Url = URL(string: profileImageUrl)
+        
+            
+            
 //            URLSession.shared.dataTask(with: Url!, completionHandler: {(data, response, error) in
 //                if error != nil {
 //                    print(error!)

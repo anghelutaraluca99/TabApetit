@@ -17,12 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    override init() {
+        super.init()
+        // Firebase Init
+        FirebaseApp.configure()
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("AIzaSyCdA8P1bAj29rI57Nac5DZkI1SNBTUkHKw")
         GMSPlacesClient.provideAPIKey("AIzaSyCdA8P1bAj29rI57Nac5DZkI1SNBTUkHKw")
-        
-        FirebaseApp.configure()
+
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

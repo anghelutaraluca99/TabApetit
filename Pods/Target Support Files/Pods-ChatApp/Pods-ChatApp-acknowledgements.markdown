@@ -235,6 +235,10 @@ Copyright 2017 Google
    limitations under the License.
 
 
+## GoogleInterchangeUtilities
+
+Copyright 2016 Google
+
 ## GoogleMaps
 
 Copyright 2017 Google
@@ -269,6 +273,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+## GoogleSymbolUtilities
+
+Copyright 2016 Google
 
 ## GoogleToolboxForMac
 

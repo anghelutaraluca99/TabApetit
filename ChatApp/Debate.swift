@@ -18,5 +18,12 @@ class Debate : NSObject {
     var numberOfParticipants : Int!
     
     override init() {
+        placeName = "No place selected"
+        placeLat = 0
+        placeLong = 0
+        date = Date.init()
+        time = Date.init()
+        theme = "No theme chosen"
+        numberOfParticipants = 1
     }
 }

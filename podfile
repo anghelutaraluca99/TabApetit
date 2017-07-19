@@ -18,7 +18,7 @@ target 'ChatApp' do
 	pod 'GooglePlaces'
 	pod 'GooglePlacePicker'
 	pod 'GooglePlacesSearchController'
-
+	pod 'GoogleInterchangeUtilities'
   target 'ChatAppTests' do
     inherit! :search_paths
     # Pods for testing

@@ -25,10 +25,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 //        let item2 = SettingsController()
 //        let item1 = NewMessageController()
         let icon1 = UITabBarItem(title: "Debates", image: #imageLiteral(resourceName: "Debate"), selectedImage: #imageLiteral(resourceName: "DebatePressed"))
-        let icon2 = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "settingsIcon"), selectedImage: #imageLiteral(resourceName: "settingsIconPressed"))
+        let icon2 = UITabBarItem(title: "Settings", image: #imageLiteral(resourceName: "settingsIcon"), selectedImage: #imageLiteral(resourceName: "settingsIconPressed"))
+        
         item1.tabBarItem = icon1
         item2.tabBarItem = icon2
-
+        
         let controllers = [item2, item1]
         self.viewControllers = controllers
     }

@@ -16,7 +16,6 @@ class NewMessageController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .plain, target: self, action: #selector(handleNewDebate))
         tableView.register(userCell.self, forCellReuseIdentifier: cellId)
         fetchUser()
@@ -64,15 +63,18 @@ class NewMessageController: UITableViewController{
         cell.imageView?.image = UIImage(named: "addProfilePicture")
         if let profileImageUrl = user.profileImageURL {
             let Url = URL(string: profileImageUrl)
-            URLSession.shared.dataTask(with: Url!, completionHandler: {(data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                DispatchQueue.main.async {
-                     cell.imageView?.image = UIImage(data: data!)
-                }
-            }).resume()
+//            URLSession.shared.dataTask(with: Url!, completionHandler: {(data, response, error) in
+//                if error != nil {
+//                    print(error!)
+//                    return
+//                }
+//                DispatchQueue.main.async {
+//                     cell.imageView?.image = UIImage(data: data!)
+//                }
+//            }).resume()
+            
+            // UNCOMMENT LATER !!!!!!!!!!!!!!!
+            
         }
         
         return cell

@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyCyJMQkXVXo831k5-kVf2zyKDrUCJH03P8")
-        GMSPlacesClient.provideAPIKey("AIzaSyDhhVK10qmBDwPgWvjE34crHRtVzsZhqzU")
+        GMSServices.provideAPIKey("AIzaSyCdA8P1bAj29rI57Nac5DZkI1SNBTUkHKw")
+        GMSPlacesClient.provideAPIKey("AIzaSyCdA8P1bAj29rI57Nac5DZkI1SNBTUkHKw")
         
         FirebaseApp.configure()
         

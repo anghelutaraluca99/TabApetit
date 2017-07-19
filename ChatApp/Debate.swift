@@ -7,15 +7,16 @@
 //
 
 import Foundation
-import GooglePlaces
 
 class Debate : NSObject {
-    var place : GMSPlace!
+    var placeName: String!
+    var placeLat: CLLocationDegrees!
+    var placeLong: CLLocationDegrees!
+    var date: Date!
+    var time: Date!
     var theme : String!
-    var participants : [User]!
+    var numberOfParticipants : Int!
     
     override init() {
-        place = GMSPlace.init()
-        theme = "General"
     }
 }

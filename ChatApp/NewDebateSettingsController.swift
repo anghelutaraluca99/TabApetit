@@ -14,6 +14,8 @@ class NewDebateSettingsController: UIViewController {
     var placeName = String()
     var placeLong = CLLocationDegrees()
     var placeLat = CLLocationDegrees()
+    let datePicker = UIDatePicker()
+    let timePicker = UIDatePicker()
     
     let placeLabelTitle : UILabel = {
        let label = UILabel()
@@ -56,7 +58,8 @@ class NewDebateSettingsController: UIViewController {
     let dateTextField : UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "dd/mm/yy"
+        textField.placeholder = "mm/dd/yy"
+        textField.addTarget(self, action: #selector(createDatePickerToolbar), for: .touchDown)
         return textField
     }()
     
@@ -64,6 +67,7 @@ class NewDebateSettingsController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "12:00"
+        textField.addTarget(self, action: #selector(createTimePickerToolbar), for: .touchDown)
         return textField
     }()
     
@@ -100,6 +104,53 @@ class NewDebateSettingsController: UIViewController {
         setupThemeTextField()
     }
     
+    func handleConfirm() {
+        let debate = Debate()
+        debate.placeName = self.placeName
+        debate.placeLat = self.placeLat
+        debate.placeLong = self.placeLong
+        debate.date = datePicker.date
+        debate.time = timePicker.date
+        debate.theme = themeTextField.text
+        print("debate created")
+    }
+    
+    func donePressed1() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateTextField.text = dateFormatter.string(from: datePicker.date)
+        datePicker.endEditing(true)
+    }
+    
+    func donePressed2() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        timeTextField.text = dateFormatter.string(from: timePicker.date)
+        timePicker.endEditing(true)
+    }
+    
+    func createTimePickerToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        timePicker.datePickerMode = UIDatePickerMode.time
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed2))
+        toolbar.setItems([doneItem], animated: true)
+        timeTextField.inputAccessoryView = toolbar
+        timeTextField.inputView = timePicker
+    }
+    
+    func createDatePickerToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        datePicker.datePickerMode = UIDatePickerMode.date
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed1))
+        toolbar.setItems([doneItem], animated: true)
+        dateTextField.inputAccessoryView = toolbar
+        dateTextField.inputView = datePicker
+    }
+    
     func setupPlaceLabel() {
         placeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 110).isActive = true
         placeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
@@ -127,7 +178,6 @@ class NewDebateSettingsController: UIViewController {
         themeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         themeTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
     }
-
     
     func setupPlaceLabelTitle() {
         placeLabelTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24).isActive = true
@@ -155,10 +205,6 @@ class NewDebateSettingsController: UIViewController {
         themeLabelTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         themeLabelTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
         themeLabelTitle.widthAnchor.constraint(equalToConstant: 150).isActive = true
-    }
-    
-    func handleConfirm() {
-        
     }
     
     func handleCancel() {

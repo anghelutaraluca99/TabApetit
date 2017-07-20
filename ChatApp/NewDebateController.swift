@@ -14,8 +14,9 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 
-class NewDebateController : UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, GMSAutocompleteViewControllerDelegate {
+class NewDebateController : UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, GMSAutocompleteViewControllerDelegate{
 
+    var debateFinisted:Bool = false
     var placeName = String()
     var placeLat = CLLocationDegrees()
     var placeLong = CLLocationDegrees()

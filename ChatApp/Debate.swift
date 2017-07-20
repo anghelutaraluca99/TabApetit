@@ -9,14 +9,15 @@
 import Foundation
 
 class Debate : NSObject {
-    var id : String!
-    var placeName: String!
-    var placeLat: CLLocationDegrees!
-    var placeLong: CLLocationDegrees!
-    var date: String!
-    var time: String!
-    var theme : String!
-    var numberOfParticipants : Int!
+    var id : String?
+    var placeName: String?
+    var placeLat: CLLocationDegrees?
+    var placeLong: CLLocationDegrees?
+    var date: String?
+    var time: String?
+    var theme : String?
+    var numberOfParticipants : Int?
+    var participants : [String]?
     
     override init() {
         placeName = "No place selected"

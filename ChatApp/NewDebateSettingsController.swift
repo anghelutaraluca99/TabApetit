@@ -12,13 +12,14 @@ import FirebaseAuth
 import Firebase
 
 class NewDebateSettingsController: UIViewController {
-
+    
     var placeName = String()
     var placeLong = CLLocationDegrees()
     var placeLat = CLLocationDegrees()
     let datePicker = UIDatePicker()
     let timePicker = UIDatePicker()
     var refDebates = DatabaseReference()
+    var debateUploaded:Bool = false
     
     let placeLabelTitle : UILabel = {
        let label = UILabel()
@@ -86,6 +87,7 @@ class NewDebateSettingsController: UIViewController {
         view.backgroundColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "confirmIcon"), style: .plain, target: self, action: #selector(handleConfirm))
+        navigationItem.title = "Finish creating debate"
         
         placeLabel.text = placeName
         view.addSubview(placeLabel)
@@ -106,6 +108,10 @@ class NewDebateSettingsController: UIViewController {
         setupThemeTextField()
     }
     
+    func changeValue(value: Bool) {
+        debateUploaded = value
+    }
+    
     func handleConfirm() {
         let ref = Database.database().reference(fromURL: "https://chatapp-ed83f.firebaseio.com/")
         let key = NSUUID().uuidString
@@ -119,7 +125,8 @@ class NewDebateSettingsController: UIViewController {
                       "date" : dateTextField.text!,
                       "time" : timeTextField.text!,
                       "theme": themeTextField.text!,
-                      "numberOfParticipants": 1 as Int] as [String : Any]
+                      "numberOfParticipants": 1 as Int,
+                      "participants": [Auth.auth().currentUser?.uid]] as [String : Any]
         if Auth.auth().currentUser?.uid != nil {
             refDebates.updateChildValues(debate, withCompletionBlock: {(error2, ref) in
                 if error2 != nil{

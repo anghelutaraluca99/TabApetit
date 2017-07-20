@@ -35,7 +35,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("Should select viewController: \(viewController.title ?? "") ?")
         return true;
     }
 }

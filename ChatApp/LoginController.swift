@@ -84,7 +84,10 @@ class LoginController: UIViewController {
         imageView.image = UIImage(named: "addProfilePicture")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:
+            #selector(handleSelectProfileImageView)))
+        imageView.layer.cornerRadius = 75
+        imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
         return imageView
     }()//Profile picture
@@ -196,7 +199,6 @@ class LoginController: UIViewController {
             }
             self.dismiss(animated: true, completion: nil)
             print("User saved succesfuly into the Firebase database!")
-            
         })
     }
     
@@ -239,8 +241,8 @@ class LoginController: UIViewController {
     func setupProfileImageView() {
         profileImageView.centerXAnchor.constraint(equalTo: inputsContainerView.centerXAnchor).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -20).isActive = true
-        profileImageView.widthAnchor.constraint(equalTo: loginRegisterSegmentedControl.widthAnchor, multiplier: 2/5).isActive = true
-        profileImageView.heightAnchor.constraint(equalTo: loginRegisterSegmentedControl.widthAnchor, multiplier: 2/5).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
 
     func handleLogin() {
@@ -260,9 +262,11 @@ class LoginController: UIViewController {
     func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
+            profileImageView.isHidden = true
         }
         else {
             handleRegister()
+            profileImageView.isHidden = false
         }
     }
     
@@ -270,9 +274,8 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //login screen color
-        view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
-        
-        //rgb(75, 33, 66)
+        //view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "restaurant"));
         //rgb(119, 104, 133)
         //view.backgroundColor = UIColor(colorLiteralRed: 61/255, green: 91/255, blue: 151/255, alpha: 1)
         

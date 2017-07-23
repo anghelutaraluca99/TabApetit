@@ -59,9 +59,8 @@ class MessagesController: UITableViewController {
     }
   
     func editProfile() {
-        let editProfileController = EditProfileController()
-        let navController = UINavigationController(rootViewController: editProfileController)
-        present(navController, animated: true, completion: nil)
+        let settingsController = SettingsController()
+        present(settingsController, animated: true, completion: nil)
     }
     
     func handleLogout() {

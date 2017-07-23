@@ -262,9 +262,11 @@ class LoginController: UIViewController {
     func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
+            profileImageView.isHidden = true
         }
         else {
             handleRegister()
+            profileImageView.isHidden = false
         }
     }
     
@@ -272,8 +274,8 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //login screen color
-        view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
-        //rgb(75, 33, 66)
+        //view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "restaurant"));
         //rgb(119, 104, 133)
         //view.backgroundColor = UIColor(colorLiteralRed: 61/255, green: 91/255, blue: 151/255, alpha: 1)
         

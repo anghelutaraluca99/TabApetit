@@ -52,7 +52,7 @@ class SettingsController: UIViewController{
     let logOutButton : UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.purple
+        button.backgroundColor = UIColor.init(patternImage: #imageLiteral(resourceName: "restaurant"))
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitle("Log Out", for: .normal)

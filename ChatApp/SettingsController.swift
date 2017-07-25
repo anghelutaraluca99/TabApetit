@@ -16,20 +16,6 @@ class SettingsController: UIViewController{
     
     var user = User()
     
-//    let changeProfileImageButton : UIButton = {
-//       let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("Change picture", for: .normal)
-//        button.setTitleColor(UIColor.blue, for: .normal)
-//        button.backgroundColor = UIColor.purple
-//        button.setTitleColor(UIColor.white, for: .normal)
-//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-//        button.layer.cornerRadius = 10
-//        button.addTarget(self, action: #selector(handleSelectProfileImageView), for: .touchUpInside)
-//        button.clipsToBounds = true
-//        return button
-//    }()
-    
     let nameLabel : UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +50,7 @@ class SettingsController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = ""
         checkIfUserIsLoggedIn()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView))

@@ -18,7 +18,7 @@ class NewMessageController: UITableViewController{
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .plain, target: self, action: #selector(handleNewDebate))
-        navigationItem.title = "Current Debates"
+        navigationItem.title = "Current reservations"
         tableView.register(debateCell.self, forCellReuseIdentifier: cellId)
         fetchDebate()
     }
@@ -41,12 +41,11 @@ class NewMessageController: UITableViewController{
                 debate.time = (dictionary["time"] as? String)
                 debate.numberOfParticipants = (dictionary["numberOfParticipants"] as? Int)
                 debate.theme = (dictionary["theme"] as? String)
+                debate.id = (dictionary["id"] as? String)
                 self.debates.append(debate)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }//dispatch async needed othervise app crashes
-                
-                print(debate.placeName!  , debate.theme!)
             }
         }, withCancel: nil)
         
@@ -58,16 +57,16 @@ class NewMessageController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return debates.count
-    }//gets the number of users
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
         let debate = debates[indexPath.row]
-        cell.textLabel?.text = debate.theme! + " at " + debate.placeName!
-        cell.detailTextLabel?.text = debate.time
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
+        cell.textLabel?.text = debate.theme
+        cell.detailTextLabel?.text = debate.date
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
         
 //        let user = users[indexPath.row]
 //        cell.textLabel?.text = user.name
@@ -97,34 +96,36 @@ class NewMessageController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let cell = tableView.cellForRow(at: indexPath)
-            print(cell?.textLabel?.text)
+            print(cell?.textLabel?.text as Any)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         
         let debate = debates[editActionsForRowAt.row]
-        debate.participants?.append((Auth.auth().currentUser?.uid)!)
         let ref = Database.database().reference(fromURL: "https://chatapp-ed83f.firebaseio.com/").child("Debates")
         
         let participate = UITableViewRowAction(style: .normal, title: "Enter") { action, index in
-            let refUpdate = ref.child(debate.id!)
-            ref.child("numberOfParticipants").updateChildValues(["numberOfParticipants" : (debate.numberOfParticipants! + 1)])
-            //ref.child("participants").updateChildValues(["participants" : debate.participants])
+            let refUpdate = ref.child("\(debate.id!)")
+            refUpdate.updateChildValues(["numberOfParticipants" : (debate.numberOfParticipants! + 1)])
+            ref.child("participants").updateChildValues(["\(debate.numberOfParticipants! + 1)" : Auth.auth().currentUser?.uid])
+            
+            //gotta do some work here
             print("Updated!")
         }
         participate.backgroundColor = .red
         
-        let seeParticipants = UITableViewRowAction(style: .normal, title: "Others") { action, index in
-            print("user chose to see who else participates")
-        }
-        seeParticipants.backgroundColor = .orange
-        
         let details = UITableViewRowAction(style: .normal, title: "Details") { action, index in
-            print("share button tapped")
+            let detailsViewController = DetailsViewController()
+            detailsViewController.time = debate.time!
+            detailsViewController.placeLat = debate.placeLat!
+            detailsViewController.placeLong = debate.placeLong!
+            detailsViewController.date = debate.date!
+            let navController = UINavigationController(rootViewController: detailsViewController)
+            self.present(navController, animated: true, completion: nil)
         }
         details.backgroundColor = .lightGray
         
-        return [participate, seeParticipants, details]
+        return [participate, details]
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

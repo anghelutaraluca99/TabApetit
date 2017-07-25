@@ -22,6 +22,7 @@ class NewDebateController : UIViewController, GMSMapViewDelegate, CLLocationMana
     var placeLong = CLLocationDegrees()
     var googleMapsView = GMSMapView()
     
+    
     // VARIABLES
     var locationManager = CLLocationManager()
     
@@ -120,6 +121,15 @@ class NewDebateController : UIViewController, GMSMapViewDelegate, CLLocationMana
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("ERROR AUTO COMPLETE \(error)")
     }
+    
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil) // when cancel search

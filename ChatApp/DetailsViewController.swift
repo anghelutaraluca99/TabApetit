@@ -13,6 +13,7 @@ class DetailsViewController: UIViewController {
 
     var placeLat = CLLocationDegrees()
     var placeLong = CLLocationDegrees()
+    var placeName = String()
     var time = String()
     var date = String()
     
@@ -20,14 +21,14 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Details"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleBack))
         
         let camera = GMSCameraPosition.camera(withLatitude: placeLat, longitude: placeLong, zoom: 16.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: placeLat, longitude: placeLong)
-        marker.title = "Reservation Here"
+        marker.title = self.placeName
         marker.snippet = "At \(date) - \(time)"
         marker.map = mapView
         view = mapView

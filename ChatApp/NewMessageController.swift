@@ -9,18 +9,44 @@
 import UIKit
 import Firebase
 
-class NewMessageController: UITableViewController{
+class NewMessageController: UITableViewController, UISearchResultsUpdating{
 
     let cellId = "cellId"
     var users = [User]()
     var debates = [Debate]()
+    var searchController = UISearchController()
+    var isSearching = false
+    var filteredArray = [Debate]()
+    var resultsController = UITableViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .plain, target: self, action: #selector(handleNewDebate))
         navigationItem.title = "Current reservations"
+        searchController = UISearchController(searchResultsController: resultsController)
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        resultsController.tableView.delegate = self
+        resultsController.tableView.dataSource = self
         tableView.register(debateCell.self, forCellReuseIdentifier: cellId)
+        resultsController.tableView.register(debateCell.self, forCellReuseIdentifier: cellId)
         fetchDebate()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if(searchController.searchBar.text != nil)
+        {
+        filteredArray = debates.filter({(debates:Debate) -> Bool in
+            if ((debates.theme)?.contains((searchController.searchBar.text)!))!{
+                return true
+            }
+            else {
+                return false
+            }
+        })
+        resultsController.tableView.reloadData()
+        }
     }
     
     func handleNewDebate() {
@@ -32,7 +58,6 @@ class NewMessageController: UITableViewController{
     func fetchDebate() {
         Database.database().reference().child("Debates").observe(.childAdded, with: {(snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]{
-                
                 let debate = Debate()
                 debate.placeName = (dictionary["placeName"] as? String)
                 debate.placeLat = (dictionary["placeLat"] as? CLLocationDegrees)
@@ -56,41 +81,29 @@ class NewMessageController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return debates.count
+        
+        if tableView == resultsController.tableView {
+            return filteredArray.count
+        }
+        else {
+            return debates.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        
-        let debate = debates[indexPath.row]
-        cell.textLabel?.text = debate.theme
-        cell.detailTextLabel?.text = debate.date
+        if tableView == resultsController.tableView {
+            let debate = filteredArray[indexPath.row]
+            cell.textLabel?.text = debate.theme
+            cell.detailTextLabel?.text = debate.date
+        }
+        else {
+            let debate = debates[indexPath.row]
+            cell.textLabel?.text = debate.theme
+            cell.detailTextLabel?.text = debate.date
+        }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16)
-        
-//        let user = users[indexPath.row]
-//        cell.textLabel?.text = user.name
-//        cell.detailTextLabel?.text = user.email
-//        cell.imageView?.image = UIImage(named: "addProfilePicture")
-//        if let profileImageUrl = user.profileImageURL {
-//            let Url = URL(string: profileImageUrl)
-//        
-//            
-        
-//            URLSession.shared.dataTask(with: Url!, completionHandler: {(data, response, error) in
-//                if error != nil {
-//                    print(error!)
-//                    return
-//                }
-//                DispatchQueue.main.async {
-//                     cell.imageView?.image = UIImage(data: data!)
-//                }
-//            }).resume()
-            
-            // UNCOMMENT LATER !!!!!!!!!!!!!!!
-            
-//        }
-        
         return cell
     }
     
@@ -107,7 +120,7 @@ class NewMessageController: UITableViewController{
         let participate = UITableViewRowAction(style: .normal, title: "Enter") { action, index in
             let refUpdate = ref.child("\(debate.id!)")
             refUpdate.updateChildValues(["numberOfParticipants" : (debate.numberOfParticipants! + 1)])
-            ref.child("participants").updateChildValues(["\(debate.numberOfParticipants! + 1)" : Auth.auth().currentUser?.uid])
+            refUpdate.child("participants").updateChildValues(["\(debate.numberOfParticipants!)" : Auth.auth().currentUser?.uid as Any])
             
             //gotta do some work here
             print("Updated!")
@@ -120,6 +133,7 @@ class NewMessageController: UITableViewController{
             detailsViewController.placeLat = debate.placeLat!
             detailsViewController.placeLong = debate.placeLong!
             detailsViewController.date = debate.date!
+            detailsViewController.placeName = debate.placeName!
             let navController = UINavigationController(rootViewController: detailsViewController)
             self.present(navController, animated: true, completion: nil)
         }
@@ -131,8 +145,6 @@ class NewMessageController: UITableViewController{
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    
 }
 
 class debateCell: UITableViewCell  {

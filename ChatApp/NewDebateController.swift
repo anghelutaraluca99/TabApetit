@@ -79,11 +79,14 @@ class NewDebateController : UIViewController, GMSMapViewDelegate, CLLocationMana
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 20.0)
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.latitude)!)
         marker.title = "Selected place"
+        marker.snippet = ""
+        marker.map = googleMapsView
         self.googleMapsView.animate(to: camera)
+        self.view = self.googleMapsView
         self.locationManager.stopUpdatingLocation()
     }
     

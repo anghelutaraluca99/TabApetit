@@ -56,7 +56,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522662640.851553"
+                  timestampString = "522784979.052742"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -71,7 +71,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522662640.855169"
+                  timestampString = "522784979.05596"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -104,7 +104,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522662640.862893"
+                  timestampString = "522784979.064054"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -119,7 +119,7 @@
                   moduleName = "ChatApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/RestApi.swift"
-                  timestampString = "522662640.866779"
+                  timestampString = "522784979.067782"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -167,217 +167,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522187629.481105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.__deallocating_deinit"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150662.981116"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.init () -&gt; ChatApp.AppDelegate"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150662.984669"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.__allocating_init () -&gt; ChatApp.AppDelegate"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150662.988176"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150662.991718"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522147935.504445"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.window.getter : Swift.Optional&lt;__ObjC.UIWindow&gt;"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150663.002186"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "35">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.window.setter : Swift.Optional&lt;__ObjC.UIWindow&gt;"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150663.005815"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "65">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatApp.AppDelegate.init () -&gt; ChatApp.AppDelegate"
-                  moduleName = "ChatApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ralucaangheluta/Desktop/ChatApp/ChatApp/AppDelegate.swift"
-                  timestampString = "522150663.009393"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522187897.179092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522187897.179092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522187897.179092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatApp/AppDelegate.swift"
-            timestampString = "522187897.179092"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ChatApp/NewDebateSettingsController.swift"
-            timestampString = "522236117.353536"
+            timestampString = "522775840.340316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

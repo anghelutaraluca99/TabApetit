@@ -71,7 +71,7 @@ class NewDebateSettingsController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "12:00"
-        textField.addTarget(self, action: #selector(createTimePickerToolbar), for: .touchDown)
+        textField.addTarget(self, action: #selector(createDatePickerToolbar), for: .touchDown)
         return textField
     }()
     
@@ -86,7 +86,7 @@ class NewDebateSettingsController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "confirmIcon"), style: .plain, target: self, action: #selector(handleConfirm))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "confirmIcon"), style: .plain, target: self, action: #selector(validate))
         navigationItem.title = "Finish creating debate"
         
         placeLabel.text = placeName
@@ -139,40 +139,69 @@ class NewDebateSettingsController: UIViewController {
         }
     }
     
+    func validate() {
+        
+        
+        if(dateTextField.text?.isEmpty==false && themeTextField.text?.isEmpty==false){
+            let date = Date.init()
+            if(date<datePicker.date){
+                handleConfirm()
+            }
+            else {
+                let alert = UIAlertController(title: "ERROR", message: "You cannto select a date before the current date.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        else{
+            let alert = UIAlertController(title: "ERROR", message: "You must fill in all the empty spaces.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        }
+    }
+    
     func donePressed1() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         dateTextField.text = dateFormatter.string(from: datePicker.date)
         datePicker.endEditing(true)
-    }
-    
-    func donePressed2() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
-        timeTextField.text = dateFormatter.string(from: timePicker.date)
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        timeTextField.text = timeFormatter.string(from: datePicker.date)
         timePicker.endEditing(true)
     }
     
-    func createTimePickerToolbar() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        timePicker.datePickerMode = UIDatePickerMode.time
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed2))
-        toolbar.setItems([doneItem], animated: true)
-        timeTextField.inputAccessoryView = toolbar
-        timeTextField.inputView = timePicker
-    }
+//    func donePressed1() {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .none
+//        dateFormatter.timeStyle = .short
+//        timeTextField.text = dateFormatter.string(from: datePicker.date)
+//        timePicker.endEditing(true)
+//    }
+    
+//    func createTimePickerToolbar() {
+//        let toolbar = UIToolbar()
+//        toolbar.sizeToFit()
+//        timePicker.datePickerMode = UIDatePickerMode.time
+//        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed2))
+//        toolbar.setItems([doneItem], animated: true)
+//        timeTextField.inputAccessoryView = toolbar
+//        timeTextField.inputView = timePicker
+//    }
     
     func createDatePickerToolbar() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        datePicker.datePickerMode = UIDatePickerMode.date
+        datePicker.datePickerMode = UIDatePickerMode.dateAndTime
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed1))
         toolbar.setItems([doneItem], animated: true)
         dateTextField.inputAccessoryView = toolbar
         dateTextField.inputView = datePicker
+        timeTextField.inputAccessoryView = toolbar
+        timeTextField.inputView = timePicker
     }
     
     func setupPlaceLabel() {

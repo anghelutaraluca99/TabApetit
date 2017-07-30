@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension SettingsController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -30,6 +31,22 @@ extension SettingsController : UIImagePickerControllerDelegate, UINavigationCont
             //print(originalImage.size)
             profileImageView.image = (originalImage as! UIImage)
         }
+        let ref = Database.database().reference(fromURL: "https://chatapp-ed83f.firebaseio.com/").child("users/").child((Auth.auth().currentUser?.uid)!)
+        let imageName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("Profile Images").child("\(imageName).png")
+        let uploadData = UIImagePNGRepresentation(self.profileImageView.image!)
+        storageRef.putData(uploadData!, metadata: nil, completion: {(metadata, error) in
+            if error != nil{
+                print(error!)
+                return
+            }
+            else
+                if (metadata?.downloadURL()?.absoluteString) != nil {
+                    ref.updateChildValues(["profileImageURL": metadata?.downloadURL()?.absoluteString])
+                    print("Profile picture updated!")
+            }
+        })
+
         self.dismiss(animated: true, completion: nil)
     }
     

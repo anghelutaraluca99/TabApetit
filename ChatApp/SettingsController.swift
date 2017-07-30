@@ -93,9 +93,6 @@ class SettingsController: UIViewController{
 
         navigationItem.title = "Settings"
         checkIfUserIsLoggedIn()
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView))
-//        profileImageView.addGestureRecognizer(tapGesture)
 
         view.addSubview(inputsContainerView)
         setupInputsContainerView()
@@ -111,7 +108,7 @@ class SettingsController: UIViewController{
         setupSeparator()
         inputsContainerView2.addSubview(changeProfilePictureButton)
         setupChangeProfilePictureButton()
-        //fetchUserData()
+        fetchUserData()
     }
     
     func setupSeparator(){

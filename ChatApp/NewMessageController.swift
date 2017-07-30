@@ -14,7 +14,7 @@ class NewMessageController: UITableViewController, UISearchResultsUpdating{
     let cellId = "cellId"
     var users = [User]()
     var debates = [Debate]()
-    var searchController = UISearchController()
+    var searchController : UISearchController!
     var isSearching = false
     var filteredArray = [Debate]()
     var resultsController = UITableViewController()
@@ -32,6 +32,7 @@ class NewMessageController: UITableViewController, UISearchResultsUpdating{
         tableView.register(debateCell.self, forCellReuseIdentifier: cellId)
         resultsController.tableView.register(debateCell.self, forCellReuseIdentifier: cellId)
         fetchDebate()
+        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -119,6 +120,7 @@ class NewMessageController: UITableViewController, UISearchResultsUpdating{
         
         let participate = UITableViewRowAction(style: .normal, title: "Enter") { action, index in
             let refUpdate = ref.child("\(debate.id!)")
+            
             refUpdate.updateChildValues(["numberOfParticipants" : (debate.numberOfParticipants! + 1)])
             refUpdate.child("participants").updateChildValues(["\(debate.numberOfParticipants!)" : Auth.auth().currentUser?.uid as Any])
             
@@ -145,6 +147,7 @@ class NewMessageController: UITableViewController, UISearchResultsUpdating{
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
 }
 
 class debateCell: UITableViewCell  {
@@ -154,6 +157,4 @@ class debateCell: UITableViewCell  {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init (coder: ) has not been implemented")
     }
-    
-    
 }

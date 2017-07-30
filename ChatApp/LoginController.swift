@@ -23,10 +23,10 @@ class LoginController: UIViewController {
     
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(colorLiteralRed: 80/255, green: 101/255, blue: 161/255, alpha: 1)
+//        button.backgroundColor = UIColor(colorLiteralRed: 80/255, green: 101/255, blue: 161/255, alpha: 1)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
@@ -221,9 +221,11 @@ class LoginController: UIViewController {
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0.0 : 1/3)
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             nameTextField.placeholder = ""
+            profileImageView.isHidden = true
         }
         else {
             nameTextField.placeholder = "Name"
+            profileImageView.isHidden = false
         }
         nameTextFieldHeightAnchor?.isActive = true
 
@@ -262,11 +264,10 @@ class LoginController: UIViewController {
     func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
-            profileImageView.isHidden = true
         }
         else {
             handleRegister()
-            profileImageView.isHidden = false
+            //profileImageView.isHidden = false
         }
     }
     
@@ -275,7 +276,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         //login screen color
         //view.backgroundColor = UIColor(colorLiteralRed: 75/255, green: 33/255, blue: 66/203, alpha: 1)
-        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "restaurant"));
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background7"));
         //rgb(119, 104, 133)
         //view.backgroundColor = UIColor(colorLiteralRed: 61/255, green: 91/255, blue: 151/255, alpha: 1)
         
